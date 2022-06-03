@@ -1,0 +1,47 @@
+name: Build bevi
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+        image: docker.io/zmkfirmware/zmk-build-arm:3.0
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Cache west modules
+      uses: actions/cache@v3.0.2
+      env:
+        cache-name: cache-zephyr-modules
+      with:
+        path: |
+          modules/
+          tools/
+          zephyr/
+          bootloader/
+        key: 4-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('app/west.yml') }}
+        restore-keys: |
+          4-${{ runner.os }}-build-${{ env.cache-name }}-
+          4-${{ runner.os }}-build-
+          4-${{ runner.os }}-
+      timeout-minutes: 2
+      continue-on-error: true
+    - name: Initialize workspace (west init)
+      run: west init -l app
+    - name: Update modules (west update)
+      run: west update
+    - name: Export Zephyr CMake package (west zephyr-export)
+      run: west zephyr-export
+    - name: Build bevi
+      run: west build -s app -p -b nice_nano -- -DSHIELD=bevi
+    - name: Upload the generated hex file
+      uses: actions/upload-artifact@v2
+      with:
+        name: hex_file
+        path: "*.uf2"
+    - name: Upload the hexfile
+      uses: actions/download-artifact@v2
+      with:
+        name: hex_file
