@@ -35,7 +35,7 @@ jobs:
     - name: Export Zephyr CMake package (west zephyr-export)
       run: west zephyr-export
     - name: Build bevi
-      run: west build -s app -p -b nice_nano -- -DSHIELD=bevi
+      run: west build -s app -p -b nice_nano_v2 -- -DSHIELD=bevi
     - name: Upload the generated hex file
       uses: actions/upload-artifact@v2
       with:
