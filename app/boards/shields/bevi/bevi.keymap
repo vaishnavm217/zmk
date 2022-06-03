@@ -1,0 +1,19 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            label = "Default";
+            bindings = <
+       &kp NLCK  &kp PSLS  &kp PAST  &kp PMNS  &kp ESC   &kp 1     &kp 2     &kp 3     &kp 4     &kp 5     &kp 6     &kp 7     &kp 8     &kp 9     &kp 0     &kp MINS  &kp EQL   &kp BSPC  &kp DEL  
+       &kp PPLS  &kp P7    &kp P8    &kp P9    &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P     &kp LBRC  &kp RBRC      &kp BSLS      
+                   &kp P4    &kp P5    &kp P6    &kp CAPS    &kp A     &kp S     &kp D     &kp F     &kp G     &kp H     &kp J     &kp K     &kp L     &kp SCLN  &kp QUOT           &kp ENT        
+       &kp PENT  &kp P1    &kp P2    &kp P3    &kp LSFT     &kp Z     &kp X     &kp C     &kp V     &kp B     &kp N     &kp M     &kp COMM  &kp DOT   &kp SLSH      &kp RSFT                     
+                   &kp P0    DBL_0    &kp PDOT  &kp LCTL  &kp LGUI  &kp LALT                                      &kp SPC                               &kp RALT  &kp RGUI  &kp RCTL  MO(1)
+            >;
+        };
+    };
+};
