@@ -1,6 +1,7 @@
 name: Build
 
 on:
+<<<<<<< HEAD
   push:
     paths:
       - ".github/workflows/build.yml"
@@ -11,6 +12,10 @@ on:
       - "app/**"
   schedule:
     - cron: "22 4 * * *"
+=======
+  workflow_dispatch:
+    
+>>>>>>> b0daf836 (No auto build on push)
 
 jobs:
   build:
