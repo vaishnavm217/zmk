@@ -40,7 +40,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: hex_file
-        path: zmk.uf2
+        path: build/zephyr/zmk.uf2
     - name: Upload the hexfile
       uses: actions/download-artifact@v2
       with:
