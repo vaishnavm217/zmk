@@ -1,0 +1,6 @@
+if SHIELD_BEVI
+
+config ZMK_KEYBOARD_NAME
+    default "Bevi"
+
+endif
